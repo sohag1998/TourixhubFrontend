@@ -10,7 +10,7 @@ import {
 import { FirstKeyPipe } from '../../shared/pipes/first-key.pipe';
 import { AuthService } from '../../shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +22,7 @@ export class SignupComponent {
   private formBuilder = inject(FormBuilder);
   private service = inject(AuthService);
   private toster = inject(ToastrService);
+  private router = inject(Router)
   // constructor(private service: AuthService) {}
 
   isSubmitted: boolean = false;
@@ -61,13 +62,15 @@ export class SignupComponent {
     if (this.form.valid) {
       this.service.createUser(this.form.value).subscribe({
         next: (res: any) => {
-          if (res.succeeded) {
+          if (res.success) {
             this.form.reset();
             this.isSubmitted = false;
             this.toster.success(
               'Account created successfully',
               'Registration Succeeded'
             );
+            this.router.navigateByUrl('/signin')
+
           } else {
           }
         },
