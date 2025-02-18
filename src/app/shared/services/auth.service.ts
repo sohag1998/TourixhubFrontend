@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,8 @@ export class AuthService {
 
   getProfile() {
     return this.http.get(environment.BASEURL + '/getprofile')
+  }
+  getSignedInUser() {
+    return JSON.parse(window.atob(this.getToken()!.split('.')[1]))
   }
 }

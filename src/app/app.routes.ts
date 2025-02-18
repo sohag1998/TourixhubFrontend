@@ -4,11 +4,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './shared/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
   {
-    path: '',
+    path: 'auth',
     component: AuthComponent,
     children: [
       {
@@ -26,4 +26,9 @@ export const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard]
   },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  { path: '', redirectTo: '/auth/signin', pathMatch: 'full' },
 ];
