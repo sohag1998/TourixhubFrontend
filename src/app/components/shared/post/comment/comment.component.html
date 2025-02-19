@@ -1,0 +1,37 @@
+<div class="comment-wraper" *ngIf="comments.length >= 1">
+    <div class="comment-item" >
+        <div class="d-flex align-content-center">
+            <div class="comment-avatar">
+                <img *ngIf="comments[0].appUser.profilePictureUrl" src="{{comments[0].appUser.profilePictureUrl}}"/>
+            </div>
+            <div class="comment-identity">
+                <h6>{{comments[0].appUser.fullName}}</h6>
+                <small class="date">{{ formatDate(comments[0].createAt)}}</small>
+            </div>
+
+        </div>
+        <div class="comment-body">
+          
+          <span class="comment-text">{{comments[0].content}}</span>
+        </div>
+    </div>
+</div>
+<!-- <div *ngFor="let comment of comments" class="comment-wraper">
+    <div class="comment-item" >
+        <div class="d-flex align-content-center">
+            <div class="comment-avatar">
+                <img *ngIf="comment.appUser.profilePictureUrl" src="{{comment.appUser.profilePictureUrl}}"/>
+            </div>
+            <div class="comment-identity">
+                <h6>{{comment.appUser.fullName}}</h6>
+                <small class="date">{{ formatDate(comment.createAt)}}</small>
+            </div>
+
+        </div>
+        <div class="comment-body">
+          
+          <span class="comment-text">{{comment.content}}</span>
+        </div>
+    </div>
+</div> -->
+

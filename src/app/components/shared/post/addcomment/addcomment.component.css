@@ -1,0 +1,23 @@
+.input-wraper{
+    border: 1px solid rgb(182, 178, 178);
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.comment-form form input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.comment-form form button {
+    border: none;
+    background: #044154;
+    color: #fff;
+    border-radius: 3px;
+}
+.error-border{
+    border: 1px solid rgb(236, 2, 2);
+}

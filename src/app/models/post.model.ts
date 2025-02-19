@@ -8,6 +8,7 @@ export interface Comment {
     id: string;
     content: string;
     appUser: AppUser;
+    createAt: Date;
 }
 
 export interface Post {

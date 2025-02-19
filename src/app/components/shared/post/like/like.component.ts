@@ -38,7 +38,6 @@ export class LikeComponent implements OnInit {
     }
     else {
       this.isLiked = false;
-      console.log(this.isLiked)
     }
 
 
@@ -65,9 +64,14 @@ export class LikeComponent implements OnInit {
 
   updateLikeBtn(liked: boolean) {
     if (liked) {
+      this.post.likedByUserIds.pop(this.authSerive.getSignedInUser().UserId)
       this.isLiked = false;
+      // console.log(this.post.likedByUserIds);
     }
-    else
+    else {
+      this.post.likedByUserIds.push(this.authSerive.getSignedInUser().UserId)
       this.isLiked = true
+      // console.log(this.post.likedByUserIds);
+    }
   }
 }

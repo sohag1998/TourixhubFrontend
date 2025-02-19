@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
@@ -17,5 +17,15 @@ export class PostService {
 
   togglePostLike(formData: any) {
     return this.http.post(environment.BASEURL + "/togglelike", formData)
+  }
+  addComment(formData: any) {
+    return this.http.post(environment.BASEURL + "/addcomment", formData)
+  }
+
+  getAllCommentByPostId(postId: string): Observable<Comment[]> {
+    const params = new HttpParams()
+      .set('postId', postId)
+
+    return this.http.get<Comment[]>(environment.BASEURL + '/commentsbypostId', { params })
   }
 }

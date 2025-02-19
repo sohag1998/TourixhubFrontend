@@ -41,3 +41,13 @@
     margin: 0 auto;
     width: 100%;
 }
+
+/*Comment Design*/
+
+.comment-area {
+    border-top: 1px solid #ededed;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+

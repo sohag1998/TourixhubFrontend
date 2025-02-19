@@ -1,0 +1,39 @@
+.comment-wraper {
+    padding: 5px 0;
+}
+.comment-avatar{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: gray;
+    margin-right: 5px;
+}
+
+.comment-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px 2px #f1f1e1;
+}
+.comment-identity {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 0.9;
+}
+.comment-identity h6{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+}
+.comment-text {
+    font-size: 12px;
+    background: #f4f4f4;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.comment-identity .date{
+    font-size: 10px;
+}

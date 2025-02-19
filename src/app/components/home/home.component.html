@@ -174,7 +174,8 @@
             <app-like [post]="post"></app-like>
             <div>
               <button class="btn"><i class="bi bi-chat-left"></i></button>
-              <span>{{post.commentCount}}</span>
+              <span *ngIf="commentCounts[post.id] == 0 && post.commentCount > 0">{{post.commentCount}}</span>
+              <span *ngIf="commentCounts[post.id] > 0">{{commentCounts[post.id]}}</span>
             </div>
               <form>
 
@@ -186,6 +187,12 @@
               <button class="btn"><i class="bi bi-share"></i></button>
             </div>
         </div>
+        <div class="comment-area">
+          <a class="btn" *ngIf="commentCounts[post.id] > 1">Show more</a>
+          <app-comment [postId]="post.id" (commentCount)="receivedCommentCount(post.id, $event)"></app-comment>
+          <app-addcomment [post]="post" ></app-addcomment>
+        </div>
+
       </div>
     </div>
   </main>
