@@ -82,7 +82,7 @@ a.logo span {
 }
 
 aside.left-sidebar {
-  width: 220px;
+  width: 250px;
   height: 100vh;
   position: fixed;
   top: 60px;
@@ -98,11 +98,8 @@ aside.right-sidebar {
   box-shadow: -1px 0px 2px 0px rgba(0,0,0,.2);
 }
 .main-content {
-  margin-top: 70px;
-  margin-left: 220px;
+  margin-left: 250px;
   margin-right: 250px;
-  padding: 20px 50px;
-  overflow: hidden;
 }
 .main-header {
   margin: 30px 0;
@@ -279,6 +276,7 @@ nav.navbarCustom ul li a:hover {
 #hamburMenuIconClose i {
   font-size: 50px;
 }
+
 @media (max-width: 1080px) {
   aside.left-sidebar {
     width: 70px;
@@ -364,6 +362,8 @@ nav.navbarCustom ul li a:hover {
 
 .btn{
   border: none !important;
+}
+.lfc-btn{
   padding: 0 5px;
 }
 

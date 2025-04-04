@@ -24,7 +24,7 @@ export function timeAgo(dateStringUtc: Date): string {
         case weeks < 4:
             return `${weeks}w ago`
         default:
-            return date.toLocaleDateString("DD/MM/YYYY")
+            return date.toLocaleDateString("en-GB")
     }
 
 }

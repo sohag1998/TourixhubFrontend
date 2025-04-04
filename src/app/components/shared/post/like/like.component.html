@@ -1,5 +1,5 @@
 <form [formGroup]="likeForm" (ngSubmit) = "onSubmitLikeToggle()">
     <input type="hidden" formControlName = "postId">
-    <button type="submit" class="btn btn-heart" ><i class="bi" [ngClass]="isLiked ? 'bi-heart-fill':'bi-heart'" (click)="updateLikeBtn(isLiked)"></i></button>
+    <button type="submit" class="btn lfc-btn btn-heart" ><i class="bi" [ngClass]="isLiked ? 'bi-heart-fill':'bi-heart'" (click)="updateLikeBtn(isLiked)"></i></button>
     <span>{{post.likeCount}}</span>
 </form>

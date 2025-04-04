@@ -1,0 +1,56 @@
+.nav-pills .nav-link {
+    background-color: #044154;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px 20px;
+}
+.nav-pills .nav-link.active {
+    background-color: #022631;
+}
+.tab-content {
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #f8f9fa;
+}
+.user-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+.user-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.user-info {
+    flex-grow: 1;
+}
+.user-info h5 {
+    margin-bottom: 5px;
+}
+.user-info p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.connect-btn, .declined-btn {
+    background-color: #044154;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.connect-btn:hover {
+    background-color: #022631;
+}
+.declined-btn {
+    background-color: rgb(78, 5, 5);
+}

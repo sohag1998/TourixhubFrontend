@@ -17,13 +17,11 @@ export class SignalrService {
   private commentsUpdates = new BehaviorSubject<{ postId: string; comments: Comment[] } | null>(null);
   commentsUpdates$ = this.commentsUpdates.asObservable();
 
-  constructor(private authService: AuthService) {
-    this.startConnection();
+  constructor() {
+
   }
 
-  private startConnection() {
-
-    const token = this.authService.getToken();
+  startConnection(token: string) {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl(`https://localhost:7025/hub/postHub`, {
         accessTokenFactory: () => token!
@@ -45,9 +43,10 @@ export class SignalrService {
     this.hubConnection.on('ReceivedCommentUpdate', (postId: string, comments: Comment[]) => {
       this.commentsUpdates.next({ postId, comments })
     })
-
-
-
-
+  }
+  stopConnection() {
+    if (this.hubConnection) {
+      this.hubConnection.stop();
+    }
   }
 }

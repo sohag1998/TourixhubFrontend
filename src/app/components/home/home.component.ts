@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Post } from '../../models/post.model';
 import { PostService } from '../../shared/services/post.service';
 import { CommonModule, NgFor } from '@angular/common';
@@ -8,44 +8,27 @@ import { LikeComponent } from "../shared/post/like/like.component";
 import { AuthService } from '../../shared/services/auth.service';
 import { AddcommentComponent } from "../shared/post/addcomment/addcomment.component";
 import { CommentComponent } from "../shared/post/comment/comment.component";
+import { AddpostComponent } from "../shared/post/addpost/addpost.component";
+import { PostComponent } from "../shared/post/post/post.component";
+import { SignalrService } from '../../shared/services/signalr.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, NgFor, ReactiveFormsModule, LikeComponent, AddcommentComponent, CommentComponent],
+  imports: [CommonModule, ReactiveFormsModule, AddpostComponent, PostComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   constructor(
-    private postService: PostService,
-    private authService: AuthService
-
+    private signalrService: SignalrService,
+    private authserVice: AuthService
   ) { }
-  private formBuilder = inject(FormBuilder)
-  posts: Post[] = [];
-  commentCounts: { [postId: string]: number } = {};
-
   ngOnInit(): void {
-    this.postService.getPosts().subscribe({
-      next: (res: any) => {
-        this.posts = res;
-        this.posts.forEach(post => {
-          this.commentCounts[post.id] = post.commentCount || 0;
-        })
-      },
-      error: (err) => {
-        console.log(err);
-      }
 
-    })
-
-    console.log(this.authService.getSignedInUser())
-    console.log(this.commentCounts);
-
+    this.signalrService.startConnection(this.authserVice.getToken()!)
   }
-
-  receivedCommentCount(posId: string, data: number) {
-    this.commentCounts[posId] = data;
+  ngOnDestroy(): void {
+    this.signalrService.stopConnection();
   }
 
 }

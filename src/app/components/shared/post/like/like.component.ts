@@ -64,7 +64,7 @@ export class LikeComponent implements OnInit {
 
   updateLikeBtn(liked: boolean) {
     if (liked) {
-      this.post.likedByUserIds.pop(this.authSerive.getSignedInUser().UserId)
+      this.post.likedByUserIds.pop(this.authSerive.getSignedInUser()?.UserId)
       this.isLiked = false;
       // console.log(this.post.likedByUserIds);
     }

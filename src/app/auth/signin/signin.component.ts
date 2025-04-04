@@ -30,7 +30,7 @@ export class SigninComponent {
       this.service.signin(this.form.value).subscribe({
         next: (res: any) => {
           localStorage.setItem('token', res.token);
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/');
         },
         error: (err) => {
           if (err.status == 400) {

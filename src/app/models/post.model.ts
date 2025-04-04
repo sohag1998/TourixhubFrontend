@@ -11,12 +11,18 @@ export interface Comment {
     createAt: Date;
 }
 
+export interface Message {
+    sender: string;
+    text: string;
+    timestamp: string;
+}
+
 export interface Post {
     id: string;
     content: string;
     imageUrl?: string;
     isPrivate: boolean;
-    createAt: Date | string;
+    createAt: Date;
     appUser: AppUser;
     likeCount: number;
     commentCount: number;
@@ -26,4 +32,10 @@ export interface Post {
     favoritedByUserIds: string[];
     reportedByUserIds: string[];
     comments: Comment[];
+    images: string[];
+}
+
+export interface AddPostDto {
+    Content: string | null;
+    Images: File[] | null;
 }

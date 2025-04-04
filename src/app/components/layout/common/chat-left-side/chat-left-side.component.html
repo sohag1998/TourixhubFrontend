@@ -1,0 +1,21 @@
+<aside class="left-sidebar bg-white">
+    <div id="plist" class="people-list">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search...">
+        </div>
+        <ul class="list-unstyled chat-list mt-2 mb-0">
+            <li class="clearfix" *ngFor="let user of inboxedUser">
+                <a [routerLink] = "['/inbox']" [queryParams]="{id: user.id}">
+                    <img src="{{user.profilePictureUrl}}" alt="avatar">
+                    <div class="about">
+                        <div class="name">{{user.fullName}}</div>
+                        <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>

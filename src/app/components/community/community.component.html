@@ -1,0 +1,59 @@
+        <!-- Tab Menu as Buttons -->
+    <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home" type="button" role="tab">Pending Requests</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile" type="button" role="tab">Your Connections</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="explore-tab" data-bs-toggle="pill" data-bs-target="#explore" type="button" role="tab">Explore New</button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="myTabContent">
+        <!-- Home Section -->
+        <div class="tab-pane fade show active" id="home" role="tabpanel">
+            <div class="user-card" *ngFor="let user of pendingRequest">
+                <img src="{{user.profilePictureUrl || 'assets/default-user.jpg'}}" alt="User">
+                <div class="user-info">
+                    <h5>{{user.fullName}}</h5>
+                    <p>Data Analyst</p>
+                </div>
+                <div class="btn-group">
+                    <button class="connect-btn mx-2" (click)="acceptRequest(user.id)">Accept</button>
+                    <button class="declined-btn" (click)="declinedRequest(user.id)">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Connections Section -->
+        <div class="tab-pane fade" id="profile" role="tabpanel">
+            <div class="user-card" *ngFor="let user of friends">
+                <img src="{{user.profilePictureUrl || 'assets/default-user.jpg'}}" alt="User">
+                <div class="user-info">
+                    <h5>{{user.fullName}}</h5>
+                    <p>Data Analyst</p>
+                </div>
+
+                <button class="connect-btn" (click)="removeFriend(user.id)">Remove</button>
+            </div>
+        </div>
+
+        <!-- Explore New Section -->
+        <div class="tab-pane fade" id="explore" role="tabpanel">
+                <div class="user-card" *ngFor="let user of nonFriendsUsers">
+                  <img [src]="user.profilePictureUrl || 'assets/default-user.jpg'" alt="User">
+                  <div class="user-info">
+                    <h5>{{ user.fullName }}</h5>
+                    <p>Data Analyst</p>
+                  </div>
+              
+                  <!-- Hidden input field to store user ID -->
+                  <input type="hidden" name="receiverId" [value]="user.id" ngModel>
+              
+                  <button class="connect-btn" type="button" (click)="sendRequest(user.id)">Connect</button>
+                </div>
+        </div>
+    </div>

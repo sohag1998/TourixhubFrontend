@@ -1,0 +1,45 @@
+<!-- Button to open modal -->
+<button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#postModal">
+    Create New Post
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalLabel">Create Your New Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="modal-body">
+         
+            <!-- Textbox (Required Text) -->
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="What's on your mind?" id="content" [(ngModel)]="postData.Content" name="content"></textarea>
+            </div>
+  
+            <!-- Image Upload (Optional) -->
+            <div class="mb-3 text-center">
+              <label for="imageUpload" class="custom-file-label">📸 Upload Images</label>
+              <input type="file" id="imageUpload" (change)="onFileChange($event)" multiple accept="image/*" class="d-none">
+            </div>
+  
+            <!-- Image Preview Section -->
+            <div class="preview-container d-flex flex-wrap justify-content-center">
+              <div *ngFor="let image of images; let i = index" class="position-relative m-2">
+                <img [src]="image.url" class="rounded shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+                <!-- <button type="button" class="btn-close position-absolute top-0 end-0" (click)="removeImage(i)"></button> -->
+              </div>
+            </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" >Post</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+  

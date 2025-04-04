@@ -69,7 +69,7 @@ export class SignupComponent {
               'Account created successfully',
               'Registration Succeeded'
             );
-            this.router.navigateByUrl('/signin')
+            this.router.navigateByUrl('/auth/signin')
 
           } else {
           }
